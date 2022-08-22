@@ -1,0 +1,199 @@
+@font-face {
+    font-family: fontos;
+    src: url("American Captain.ttf");
+}
+
+@font-face {
+    font-family:header ;
+    src: url("Klik-Light.otf");
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+}
+
+body{
+    background-color: #26282f;
+    font-family: fontos;
+    color:#fff ;
+    transition:  all ease-in-out 0.3s;
+}
+
+header{
+    text-align: center;
+    font-family:header ;
+}
+
+.app{
+    margin: 5vw 5vw ;
+    width: 75vw;
+    height: 50vh; 
+}
+
+.sectionA{
+    margin: 0vw 7vw 0vw 7vw;
+    width: 100%;
+    height: 7vw;
+    display: flex;
+    flex-basis: 0;
+    flex-flow: row nowrap;
+}
+
+.inputTodo{
+    flex: 5;
+    background-color: #2e2e32;
+    color: rgba(202, 200, 200, 0.769);
+    border: 0.2vw solid rgba(0, 0, 0, 0.466);
+    border-radius: 2vw;
+    padding: 0vw 0vw 0vw 1vw;
+    margin: 0vw 0vw 0vw 0vw;
+    font-size: 2vw;
+    font-family: fontos;
+}
+
+.addButton{
+    flex: 1;
+    background: -webkit-linear-gradient(#ff00ea ,#8400ff);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 0vw 0vw 0vw 0vw;
+    margin: 0vw 2vw 0vw 0vw;
+    border-radius: 0.7rem;
+    border: none;
+    cursor: pointer;
+    font-family: fontos;
+    font-size: 4vw;
+    text-align: center;
+
+
+    float: right;
+    text-align: center;
+}
+
+.addButton:hover{
+    cursor: pointer;
+    background-image: linear-gradient(to right, #8400ff ,#ff00ea );
+}
+
+.sectionB{
+    margin: 0vw 7vw 0vw 7vw;
+    margin-top: 5vw;
+    font-size: 3vw;
+    height: 55vw;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.071);
+    color: black;
+    border: 0.2vw solid black;
+}
+
+.doneTab{
+    height:10%;
+    width: 50%;
+    font-family: fontos;
+    cursor: pointer;
+    margin: 0vw;
+    background-color: rgba(255, 255, 255, 0);
+    border:none;
+    color: rgb(255, 255, 255);
+    font-size: 2vw;
+    padding: 0%;
+}
+
+.unDoneTab{
+    height: 10%;
+    width: 50%;
+    font-family: fontos;
+    cursor: pointer;
+    margin: 0vw;
+    background-color: rgba(28, 28, 28, 0.67);
+    border: none;
+    color: rgb(255, 255, 255);
+    font-size: 2vw;
+    padding: 0%;
+}
+
+.myList{
+    list-style-type: none;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-color: #2d2f38 #ffffff8e;
+    scrollbar-width: thin;
+    height: 50vw;
+    padding: 0vw;
+    margin-bottom: 0vw;
+  }
+
+
+
+.todo-container{
+    display:grid;
+    grid-template-columns: auto auto ;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+    background: rgb(35, 38, 45);
+    padding: 1.5vw; 
+    width:97%;
+    height: 5vw; 
+    font-size: 2vw;
+    color: rgba(255, 255, 255, 0.769);
+}
+
+.todoText{
+    text-align: left;
+    float: left;
+}
+
+.actionButton{
+    float: right;
+    text-align: right;
+}
+
+.toggleButton{
+    font-family: fontos;
+    cursor: pointer;
+    margin: 0vw;
+    background-color: white;
+    border: black;
+    color: black;
+    font-size: 2vw;
+    height: 4.5vw;
+    width: 100%;
+    cursor: pointer;  
+}
+
+.removeButton{
+    font-family: fontos;
+    cursor: pointer;
+    float: right;
+    margin-right: 0.5vw;
+    height: 4vw;
+    width: 10vw;
+    font-size: 2vw;
+    border: 0.2vw solid black;
+    background-color: white; 
+}
+
+.removeButton:hover{
+    background-color: rgb(231, 84, 84); 
+}
+
+.doneButton{
+    font-family: fontos;
+    float: right;
+    margin-right: 0.5vw;
+    height: 4vw;
+    width: 10vw;
+    font-size: 2vw;
+    border: 0.2vw solid black;
+    background-color: white; 
+    cursor: pointer;
+}
+
+.doneButton:hover{
+    background-color: rgb(84, 231, 123); 
+}
