@@ -1,11 +1,16 @@
 @font-face {
-    font-family: fontos;
-    src: url("American Captain.ttf");
+    font-family: fontos1;
+    src: url(LEMONMILK-Bold.otf);
 }
 
 @font-face {
-    font-family:header ;
-    src: url("Klik-Light.otf");
+    font-family: fontos2;
+    src: url(Klik-Light.otf);
+}
+
+@font-face {
+    font-family: fontos;
+    src: url("American Captain.ttf");
 }
 
 ::-webkit-scrollbar{
@@ -17,183 +22,195 @@
 }
 
 body{
+    width: 100%;
     background-color: #26282f;
-    font-family: fontos;
-    color:#fff ;
-    transition:  all ease-in-out 0.3s;
+    color: #fff;
+    transition:  all ease-in-out 0.2s;
 }
 
 header{
     text-align: center;
-    font-family:header ;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-family: fontos1;
+    font-size: 25px;
+}
+
+.root{
+    width: 800px;
+    display: inline;
 }
 
 .app{
-    margin: 5vw 5vw ;
-    width: 75vw;
-    height: 50vh; 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .sectionA{
-    margin: 0vw 7vw 0vw 7vw;
-    width: 100%;
-    height: 7vw;
+    width: 800px;
     display: flex;
-    flex-basis: 0;
-    flex-flow: row nowrap;
+    flex-direction: row;
+    border: 2px solid black;
+    border-bottom: 0px;
+    margin: 0px;
 }
 
 .inputTodo{
-    flex: 5;
-    background-color: #2e2e32;
-    color: rgba(202, 200, 200, 0.769);
-    border: 0.2vw solid rgba(0, 0, 0, 0.466);
-    border-radius: 2vw;
-    padding: 0vw 0vw 0vw 1vw;
-    margin: 0vw 0vw 0vw 0vw;
-    font-size: 2vw;
-    font-family: fontos;
+    width: 750px;
+    padding: 5px 0px 5px 15px;
+    border-radius: 0.1rem;
+    margin: 0px;
+    font-family: fontos2;
+    background-color: #26282f;
+    color: rgba(255, 255, 255, 0.769);
+    border: 0px solid black;
+    border-right: 2px solid rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+}
+
+.inputTodo:focus, .inputTodo:focus{
+    outline: none;
 }
 
 .addButton{
-    flex: 1;
+    width: 100px;
+    font-family: fontos;
+    font-size: 35px;
     background: -webkit-linear-gradient(#ff00ea ,#8400ff);
     background-clip: border-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     padding: 0vw 0vw 0vw 0vw;
-    margin: 0vw 2vw 0vw 0vw;
+    margin: 10px 15px 5px 0px;
     border-radius: 0.7rem;
     border: none;
     cursor: pointer;
-    font-family: fontos;
-    font-size: 4vw;
     text-align: center;
-
-
     float: right;
-    text-align: center;
-}
-
-.addButton:hover{
-    cursor: pointer;
-    background-image: linear-gradient(to right, #8400ff ,#ff00ea );
 }
 
 .sectionB{
-    margin: 0vw 7vw 0vw 7vw;
-    margin-top: 5vw;
-    font-size: 3vw;
-    height: 55vw;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.071);
-    color: black;
-    border: 0.2vw solid black;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    font-family: fontos2;
+    font-size: 25px;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    margin: 0px;
 }
 
-.doneTab{
-    height:10%;
-    width: 50%;
-    font-family: fontos;
-    cursor: pointer;
-    margin: 0vw;
-    background-color: rgba(255, 255, 255, 0);
-    border:none;
-    color: rgb(255, 255, 255);
-    font-size: 2vw;
-    padding: 0%;
+.categories{
+    width: 100%;
 }
 
 .unDoneTab{
-    height: 10%;
-    width: 50%;
-    font-family: fontos;
     cursor: pointer;
-    margin: 0vw;
+    font-family: fontos2;
+    width: 50%;
     background-color: rgba(28, 28, 28, 0.67);
-    border: none;
-    color: rgb(255, 255, 255);
-    font-size: 2vw;
-    padding: 0%;
+    color: #fff;
+    font-size: 25px;
+    border: 1px solid black;
+    padding: 5px 0px 5px 0px;
+}
+
+.doneTab{
+    cursor: pointer;
+    font-family: fontos2;
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0);
+    color: rgb(255, 255, 255, 0.5);
+    font-size: 25px;
+    border: 1px solid black;
+    padding: 5px 0px 5px 0px;
 }
 
 .myList{
-    list-style-type: none;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #26282f;
+    height: 500px;
     overflow-y: scroll;
-    scrollbar-color: #2d2f38 #ffffff8e;
-    scrollbar-width: thin;
-    height: 50vw;
-    padding: 0vw;
-    margin-bottom: 0vw;
-  }
 
+}
 
+#style-2::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	
+	background-color: #1d1d1d;
+}
+
+#style-2::-webkit-scrollbar{
+	width: 12px;
+    
+	background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	background-color: #9e9e9e;
+}
 
 .todo-container{
-    display:grid;
-    grid-template-columns: auto auto ;
-    margin-bottom: 1vw;
-    margin-top: 1vw;
-    background: rgb(35, 38, 45);
-    padding: 1.5vw; 
-    width:97%;
-    height: 5vw; 
-    font-size: 2vw;
-    color: rgba(255, 255, 255, 0.769);
+    border-top: 2px solid black;
+    font-family: fontos2;
+    font-size: 20px;
+    height: 30px;
+    padding: 15px 0px 15px 10px;
+    margin-bottom: 10px;
+ 
 }
 
 .todoText{
-    text-align: left;
-    float: left;
+    overflow-x: scroll;
 }
 
 .actionButton{
     float: right;
-    text-align: right;
-}
+    font-family: fontos2;
 
-.toggleButton{
-    font-family: fontos;
-    cursor: pointer;
-    margin: 0vw;
-    background-color: white;
-    border: black;
-    color: black;
-    font-size: 2vw;
-    height: 4.5vw;
-    width: 100%;
-    cursor: pointer;  
+
 }
 
 .removeButton{
-    font-family: fontos;
     cursor: pointer;
-    float: right;
-    margin-right: 0.5vw;
-    height: 4vw;
-    width: 10vw;
-    font-size: 2vw;
-    border: 0.2vw solid black;
-    background-color: white; 
+    height: max-content;
+    margin-right: 5px;
+
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgb(245, 245, 245);
+    border-radius: 5px;
+    font-size: 15px;
 }
 
 .removeButton:hover{
-    background-color: rgb(231, 84, 84); 
+    background-color: rgb(230, 100, 100);
+    border: 1px solid rgb(230, 100, 100);
 }
 
 .doneButton{
-    font-family: fontos;
-    float: right;
-    margin-right: 0.5vw;
-    height: 4vw;
-    width: 10vw;
-    font-size: 2vw;
-    border: 0.2vw solid black;
-    background-color: white; 
     cursor: pointer;
+    height: max-content;
+    margin-right: 5px;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgb(245, 245, 245);
+    border-radius: 5px;
+    font-size: 15px;
 }
 
 .doneButton:hover{
-    background-color: rgb(84, 231, 123); 
+    background-color: rgb(144, 224, 144);
+    border: 1px solid rgb(100, 230, 100);
+}
+
+.toggleButton{
+    font-family: fontos2;
+    width: 100%;
+    background-color: fff;
+    color: black;
+    font-size: 20px;
 }

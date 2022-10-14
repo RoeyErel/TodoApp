@@ -1,4 +1,10 @@
 /**
+ * Debug
+ * remove button remove todo at the undone section
+ * 
+ */
+
+/**
  * @param isDark - Boolean for dark or light mode.
  * @param isDone - Boolean for complete mission status.
  * @param unDoneTodo - array for uncompleted todo.
@@ -12,46 +18,61 @@ const unDoneTodo = [];
 const doneTodo = [];
 let counter1 =0
 
-const headline = document.querySelector("h1")
+/**
+ * main elements
+ */
+const main = document.querySelector("div");
+const headline = document.querySelector("h1");
 const app = document.createElement("div");
+
+/**
+ * section A
+ */
 const sectionA = document.createElement("div");
 const inputTodo = document.createElement("input");
 const addButton = document.createElement("button");
+
+/**
+ * section B
+ */
+const sectionB = document.createElement("div");
+const categories = document.createElement("div");
 const doneTab = document.createElement("button");
 const unDoneTab = document.createElement("button");
-const sectionB = document.createElement("div");
 const myList = document.createElement("div");
 const toggleButton = document.createElement("button");
 
+/**
+ * set properties for the elemnts
+ */
 app.className = "app";
 sectionA.className = "sectionA";
 inputTodo.className = "inputTodo";
+inputTodo.value = "WHAT WILL BE YOUR TASKS FOR TODAY?";
 addButton.className = "addButton";
+addButton.innerText = "ADD";
+
 sectionB.className = "sectionB";
 myList.className = "myList";
 myList.id = 'style-2';
-
-inputTodo.value = "WHAT WILL BE YOUR TASKS FOR TODAY?";
-addButton.innerText = "ADD";
+categories.className = 'categories';
 doneTab.className = "doneTab";
 unDoneTab.className = "unDoneTab";
 doneTab.innerText = "Done";
 unDoneTab.innerText = "UnDone";
-
-toggleButton.innerText = 'Light';
+toggleButton.innerText = 'LIGHT';
 toggleButton.className = 'toggleButton'
 
 /**
- * listener for toggle button
- * 
+ * Power up the dark/light button
  */
 toggleButton.addEventListener('click', () => {
-    toggleButton.innerText = isDark ? 'Dark' : 'Light';
+    toggleButton.innerText = isDark ? 'DARK' : 'LIGHT';
     toggleButton.style.backgroundColor = isDark ? '#26282f' : '#fff';
     toggleButton.style.border = isDark ? '#26282f' : 'black';
     toggleButton.style.color = isDark ? '#fff' : 'black';
     headline.style.color = isDark ? 'rgba(0, 0, 0, 0.769)' : 'rgba(255, 255, 255, 0.769)';
-    inputTodo.style.backgroundColor = isDark ? '#f5f5f5' : '#2e2e32' ;
+    inputTodo.style.backgroundColor = isDark ? '#f5f5f5' : '#26282f' ;
     inputTodo.style.color = isDark ? 'rgba(0, 0, 0, 0.669)' : 'rgba(202, 200, 200, 0.769';
     document.body.style.color = isDark ? '#26282f' : '#fff';
     document.body.style.backgroundColor = isDark ? '#f5f5f5' : '#26282f';
@@ -60,20 +81,19 @@ toggleButton.addEventListener('click', () => {
     unDoneTab.style.color = isDark ? 'rgb(41, 41, 41)' : 'rgba(255, 255, 255, 1)';
     doneTab.style.backgroundColor = isDark ? 'rgb(230, 230, 230)' : 'rgba(255, 255, 255, 0)';
     doneTab.style.color = isDark ?  'rgb(41, 41, 41)' : 'rgb(255, 255, 255)';
+    myList.style.backgroundColor = isDark ? '#fff' : '#26282f';
     isDark = !isDark;
 })
 
 /**
- * 
+ * append the elements
  */
-document.body.append(app);
+document.body.append(main)
+main.append(app)
 app.append(sectionA, sectionB);
 sectionA.append(inputTodo, addButton);
-sectionB.append(doneTab, unDoneTab , myList, toggleButton);
-
-/**
- * 
- */
+sectionB.append(categories, myList, toggleButton);
+categories.append(unDoneTab,doneTab)
 inputTodo.addEventListener('click', () =>{
     if(counter1 < 1){
         inputTodo.value = "";
@@ -81,17 +101,14 @@ inputTodo.addEventListener('click', () =>{
     counter1++;
 })
 
-
 /**
  * 
+ * @param {*} wichTab 
  */
 const renderTodo = (wichTab) => {
     const currentTodosArr = wichTab === "unDone" ? unDoneTodo : doneTodo;
     myList.innerHTML = '';
 
-    /**
-     * 
-     */
     currentTodosArr.forEach(todo => {
         const todoContainer = document.createElement("div")
         const actionButtonContainer = document.createElement("div")
@@ -99,9 +116,6 @@ const renderTodo = (wichTab) => {
         const removeButton = document.createElement("button");
         const doneButton = document.createElement("button");
 
-        /**
-         * 
-         */
         removeButton.addEventListener('click',() => {
             const todoIndex= currentTodosArr.findIndex(td => td.id === todo.id);
             const completedTodo = currentTodosArr.splice(todoIndex, 1);
@@ -109,9 +123,6 @@ const renderTodo = (wichTab) => {
             todoContainer.parentElement.removeChild(todoContainer);
         })
 
-        /**
-         * 
-         */
         doneButton.addEventListener('click',() => {
            const todoIndex= currentTodosArr.findIndex(td => td.id === todo.id);
            const completedTodo = currentTodosArr.splice(todoIndex, 1);
@@ -138,13 +149,9 @@ const renderTodo = (wichTab) => {
         todoContainer.append(title, actionButtonContainer)
         myList.appendChild(todoContainer)
 
-
     })  
 }
 
-/**
- * 
- */
 inputTodo.addEventListener("keyup", (event) => {
     if(event.code === 'Enter'){
         if(!inputTodo.value){
@@ -158,9 +165,6 @@ inputTodo.addEventListener("keyup", (event) => {
     }
 })
 
-/**
- * 
- */
 addButton.addEventListener('click', (event) => {
         if(!inputTodo.value){
             return;   
@@ -172,26 +176,20 @@ addButton.addEventListener('click', (event) => {
         inputTodo.value = '';
 })
 
-/**
- * 
- */
 unDoneTab.addEventListener('click', () => {
     unDoneTab.style.backgroundColor = isDark ? 'rgba(28, 28, 28, 0.67)' : 'rgb(180, 180, 180)';
     unDoneTab.style.color = isDark ? 'rgba(255, 255, 255, 1)' : 'rgb(41, 41, 41)';
     doneTab.style.backgroundColor = isDark ? 'rgba(255, 255, 255, 0)' : 'rgb(230, 230, 230)';
-    doneTab.style.color = isDark ? 'rgb(255, 255, 255)': 'rgb(41, 41, 41)';
+    doneTab.style.color = isDark ? 'rgb(255, 255, 255, 0.5)': 'rgb(41, 41, 41)';
     onList = "undone";
     renderTodo("unDone");
 })
 
-/**
- * 
- */
 doneTab.addEventListener('click', () => { 
     doneTab.style.backgroundColor = isDark ? 'rgba(28, 28, 28, 0.67)': 'rgb(180, 180, 180)';
     doneTab.style.color = isDark ? 'rgb(255, 255, 255)': 'rgb(41, 41, 41)';
     unDoneTab.style.backgroundColor = isDark ? 'rgba(255, 255, 255, 0)' : 'rgb(230, 230, 230)';
-    unDoneTab.style.color = isDark ? 'rgb(255, 255, 255)': 'rgb(41, 41, 41)';
+    unDoneTab.style.color = isDark ? 'rgb(255, 255, 255, 0.5)': 'rgb(41, 41, 41)';
     onList = "done";
     renderTodo();
 })
