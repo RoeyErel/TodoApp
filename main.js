@@ -1,10 +1,4 @@
 /**
- * Debug
- * remove button remove todo at the undone section
- * 
- */
-
-/**
  * @param isDark - Boolean for dark or light mode.
  * @param isDone - Boolean for complete mission status.
  * @param unDoneTodo - array for uncompleted todo.
@@ -18,23 +12,17 @@ const unDoneTodo = [];
 const doneTodo = [];
 let counter1 =0
 
-/**
- * main elements
- */
+//main elements
 const main = document.querySelector("div");
 const headline = document.querySelector("h1");
 const app = document.createElement("div");
 
-/**
- * section A
- */
+//Section A
 const sectionA = document.createElement("div");
 const inputTodo = document.createElement("input");
 const addButton = document.createElement("button");
 
-/**
- * section B
- */
+//Section B
 const sectionB = document.createElement("div");
 const categories = document.createElement("div");
 const doneTab = document.createElement("button");
@@ -42,9 +30,7 @@ const unDoneTab = document.createElement("button");
 const myList = document.createElement("div");
 const toggleButton = document.createElement("button");
 
-/**
- * set properties for the elemnts
- */
+//Set properties for the elemnts
 app.className = "app";
 sectionA.className = "sectionA";
 inputTodo.className = "inputTodo";
@@ -63,9 +49,7 @@ unDoneTab.innerText = "UnDone";
 toggleButton.innerText = 'LIGHT';
 toggleButton.className = 'toggleButton'
 
-/**
- * Power up the dark/light button
- */
+//Power up the dark/light button
 toggleButton.addEventListener('click', () => {
     toggleButton.innerText = isDark ? 'DARK' : 'LIGHT';
     toggleButton.style.backgroundColor = isDark ? '#26282f' : '#fff';
@@ -86,7 +70,7 @@ toggleButton.addEventListener('click', () => {
 })
 
 /**
- * append the elements
+ * append the main elements
  */
 document.body.append(main)
 main.append(app)
@@ -102,8 +86,8 @@ inputTodo.addEventListener('click', () =>{
 })
 
 /**
- * 
- * @param {*} wichTab 
+ * ~~~~~~~~~~~~~~
+ * @param wichTab 
  */
 const renderTodo = (wichTab) => {
     const currentTodosArr = wichTab === "unDone" ? unDoneTodo : doneTodo;
@@ -116,20 +100,19 @@ const renderTodo = (wichTab) => {
         const removeButton = document.createElement("button");
         const doneButton = document.createElement("button");
 
+        //Remove todo
         removeButton.addEventListener('click',() => {
-            const todoIndex= currentTodosArr.findIndex(td => td.id === todo.id);
-            const completedTodo = currentTodosArr.splice(todoIndex, 1);
-            doneTodo.pop(completedTodo[0])
             todoContainer.parentElement.removeChild(todoContainer);
         })
 
+        //Move todo to the "done todos" list
         doneButton.addEventListener('click',() => {
            const todoIndex= currentTodosArr.findIndex(td => td.id === todo.id);
            const completedTodo = currentTodosArr.splice(todoIndex, 1);
            doneTodo.push(completedTodo[0])
            renderTodo("unDone")
         })
-
+        //Dark/light mode button
         toggleButton.addEventListener('click', () => {
             todoContainer.style.backgroundColor = isDark ? 'rgb(35, 38, 45)' : 'rgba(255, 255, 255, 0.769)';
             todoContainer.style.color = isDark ?  'rgba(255, 255, 255, 0.769)' : 'rgb(33, 33, 33)';
@@ -152,12 +135,12 @@ const renderTodo = (wichTab) => {
     })  
 }
 
+// Add todo with 'Enter' key
 inputTodo.addEventListener("keyup", (event) => {
     if(event.code === 'Enter'){
         if(!inputTodo.value){
             return;   
         }
-
         const newTodo = {title: inputTodo.value ,isDone: false , id: Date.now()};
         unDoneTodo.push(newTodo);
         renderTodo("unDone");
@@ -165,17 +148,19 @@ inputTodo.addEventListener("keyup", (event) => {
     }
 })
 
+// Add todo
 addButton.addEventListener('click', (event) => {
-        if(!inputTodo.value){
-            return;   
-        }
+    if(!inputTodo.value){
+        return;   
+    }
 
-        const newTodo = {title: inputTodo.value ,isDone: false , id: Date.now()};
-        unDoneTodo.push(newTodo);
-        renderTodo("unDone");
-        inputTodo.value = '';
+    const newTodo = {title: inputTodo.value ,isDone: false , id: Date.now()};
+    unDoneTodo.push(newTodo);
+    renderTodo("unDone");
+    inputTodo.value = '';
 })
 
+// create "pressed" mode for the undone button
 unDoneTab.addEventListener('click', () => {
     unDoneTab.style.backgroundColor = isDark ? 'rgba(28, 28, 28, 0.67)' : 'rgb(180, 180, 180)';
     unDoneTab.style.color = isDark ? 'rgba(255, 255, 255, 1)' : 'rgb(41, 41, 41)';
@@ -185,6 +170,7 @@ unDoneTab.addEventListener('click', () => {
     renderTodo("unDone");
 })
 
+// create "pressed" mode for the done button
 doneTab.addEventListener('click', () => { 
     doneTab.style.backgroundColor = isDark ? 'rgba(28, 28, 28, 0.67)': 'rgb(180, 180, 180)';
     doneTab.style.color = isDark ? 'rgb(255, 255, 255)': 'rgb(41, 41, 41)';

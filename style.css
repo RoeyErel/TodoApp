@@ -17,10 +17,6 @@
     width: 5px;
 }
 
-::-webkit-scrollbar{
-    width: 5px;
-}
-
 body{
     width: 100%;
     background-color: #26282f;
